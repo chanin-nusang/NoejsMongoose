@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,30 +8,43 @@
     <title>REALCHANIN</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
+
 <body>
-    <%- include('../layout') %> 
-    <div class="py-2">
-    <a href="/" class="btn btn-success">กลับหน้าแรก</a>
-    </div>
-    <hr>
-    <h2><%= data %></h2>
-    <form action="/blogs/add" method="POST">
+    <%- include('../layout') %>
         <div class="py-2">
-            <label for="">ชื่อบทความ</label>
-            <input type="text" name="title" class="form-control" id="">
+            <a href="/" class="btn btn-success">กลับหน้าแรก</a>
         </div>
-        <div class="py-2">
-            <label for="">ผู้เขียน</label>
-            <input type="text" name="author" class="form-control" id="">
-        </div>
-        <div class="py-2">
-            <label for="">หมวดหมู่</label>
-            <select name="category" id="" class="form-select" style="width:auto";>
-                <option value="นิยาย">นิยาย</option>
-                <option value="สารคดี">สารคดี</option>
-                <option value="เรื่องเล่า">เรื่องเล่า</option>
-            </select>
-        </div>
-        <input type="submit" class="btn btn-primary" name="" id="" value="บันทึก">
+        <hr>
+        <h2>
+            <%= data %>
+        </h2>
+        <% if (locals.errors) { %>
+            <ul class="alert alert-danger py-2">
+                <% Object.values(errors).forEach(function(error){ %>
+                    <li class="mx-3">
+                        <%= error.msg %>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+                <form action="/blogs/add" method="POST">
+                    <div class="py-2">
+                        <label for="">ชื่อบทความ</label>
+                        <input type="text" name="title" class="form-control" id="">
+                    </div>
+                    <div class="py-2">
+                        <label for="">ผู้เขียน</label>
+                        <input type="text" name="author" class="form-control" id="">
+                    </div>
+                    <div class="py-2">
+                        <label for="">หมวดหมู่</label>
+                        <select name="category" id="" class="form-select" style="width:auto" ;>
+                            <option value="นิยาย">นิยาย</option>
+                            <option value="สารคดี">สารคดี</option>
+                            <option value="เรื่องเล่า">เรื่องเล่า</option>
+                        </select>
+                    </div>
+                    <input type="submit" class="btn btn-primary" name="" id="" value="บันทึก">
 </body>
+
 </html>

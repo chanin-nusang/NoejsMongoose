@@ -15,5 +15,16 @@
     <hr>
     <h2><%= data %></h2>
     <p>by REALCHANIN</p>
+    <p>
+        <% Object.values(blogs).forEach(function(blog){ %>
+            <h5><b>ชื่อบทความ : </b><%= blog.title %></h5>
+            <p><b>ผู้แต่ง : </b><%= blog.author %></p>
+            <p><b>หมวดหมู่ : </b><%= blog.category %></p>
+            <a href="">แก้ไข</a>
+            <a href="/blogs/delete/<%= blog._id %>" 
+                onclick="return confirm('ต้องการลบบทความ <%= blog.title %> หรือไม่?')">ลบ</a>
+            <hr>
+        <% }) %>
+    </p>
 </body>
 </html>
